@@ -295,6 +295,10 @@ void MWMechanics::NpcStats::levelUp()
     // will automatically increase by 10% of your Endurance attribute. If you increased Endurance this level,
     // the Health increase is calculated from the increased Endurance"
     setHealth(getHealth().getBase() + endurance * gmst.find("fLevelUpHealthEndMult")->getFloat());
+    
+    const int intelligence = getAttribute(ESM::Attribute::Intelligence).getBase();
+    
+    setHealth(getMagicka().getBase() + intelligence * gmst.find("fLevelUpMagickaIntMult")->getFloat());
 
     setLevel(getLevel()+1);
 }
